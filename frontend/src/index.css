@@ -654,12 +654,26 @@ textarea {
 /* Mobile: the navbar's flex row doesn't wrap by default, which forces the
    whole page's layout viewport wider than the device — breaking every page
    underneath it, Goals included. Wrapping it (and stacking goal rows) is
-   what actually makes the rest of the page usable on a phone. */
+   what actually makes the rest of the page usable on a phone.
+
+   It's also pinned to the bottom of the viewport instead of the top: at the
+   top it sits above the thumb's natural reach on a phone, so pinning it to
+   the bottom (like a native tab bar) is what actually makes it tappable
+   one-handed. `main` gets matching bottom padding so content never sits
+   underneath the fixed bar. */
 @media (max-width: 640px) {
   .navbar {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
     flex-wrap: wrap;
     gap: 6px;
-    padding: 10px 14px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    border-bottom: none;
+    border-top: 1px solid #2c2f45;
+    z-index: 20;
   }
 
   .navbar .brand {
@@ -680,8 +694,13 @@ textarea {
     margin-left: 0;
   }
 
+  .app-shell {
+    padding-bottom: 0;
+  }
+
   main {
     padding: 16px;
+    padding-bottom: 130px;
   }
 
   .goal-row {
