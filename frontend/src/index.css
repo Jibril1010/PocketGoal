@@ -656,24 +656,15 @@ textarea {
    underneath it, Goals included. Wrapping it (and stacking goal rows) is
    what actually makes the rest of the page usable on a phone.
 
-   It's also pinned to the bottom of the viewport instead of the top: at the
-   top it sits above the thumb's natural reach on a phone, so pinning it to
-   the bottom (like a native tab bar) is what actually makes it tappable
-   one-handed. `main` gets matching bottom padding so content never sits
-   underneath the fixed bar. */
+   It also gets extra top padding: flush against the very top edge it sits
+   right under the status bar/notch and is easy to fat-finger-miss, so
+   dropping it down a bit makes it easier to tap without leaving the normal
+   top-of-page flow. */
 @media (max-width: 640px) {
   .navbar {
-    position: fixed;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
     flex-wrap: wrap;
     gap: 6px;
-    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-    border-bottom: none;
-    border-top: 1px solid #2c2f45;
-    z-index: 20;
+    padding: calc(20px + env(safe-area-inset-top)) 14px 10px;
   }
 
   .navbar .brand {
@@ -694,13 +685,8 @@ textarea {
     margin-left: 0;
   }
 
-  .app-shell {
-    padding-bottom: 0;
-  }
-
   main {
     padding: 16px;
-    padding-bottom: 130px;
   }
 
   .goal-row {
