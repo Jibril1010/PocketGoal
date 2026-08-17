@@ -1,0 +1,15 @@
+{
+  "name": "Pocket Goals",
+  "short_name": "Pocket Goals",
+  "description": "Turn your real-life goals into a Pokémon-style leveling game.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#14151f",
+  "theme_color": "#1d1f2e",
+  "icons": [
+    { "src": "/icons/poke.jpg", "sizes": "192x192", "type": "image/jpeg" },
+    { "src": "/icons/poke.jpg", "sizes": "512x512", "type": "image/jpeg" }
+  ]
+}
