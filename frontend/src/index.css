@@ -654,12 +654,17 @@ textarea {
 /* Mobile: the navbar's flex row doesn't wrap by default, which forces the
    whole page's layout viewport wider than the device — breaking every page
    underneath it, Goals included. Wrapping it (and stacking goal rows) is
-   what actually makes the rest of the page usable on a phone. */
+   what actually makes the rest of the page usable on a phone.
+
+   It also gets extra top padding: flush against the very top edge it sits
+   right under the status bar/notch and is easy to fat-finger-miss, so
+   dropping it down a bit makes it easier to tap without leaving the normal
+   top-of-page flow. */
 @media (max-width: 640px) {
   .navbar {
     flex-wrap: wrap;
     gap: 6px;
-    padding: 10px 14px;
+    padding: calc(20px + env(safe-area-inset-top)) 14px 10px;
   }
 
   .navbar .brand {
